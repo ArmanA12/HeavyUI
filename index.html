@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HeavY_UI | Obsidian Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Critical: Pre-render theme check to prevent flickering
+      (function() {
+        const savedTheme = localStorage.getItem('heavy-ui-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else if (savedTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          // Default to dark for HeavY_UI brand identity
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+      
+      .museomoderno-heavy {
+        font-family: "MuseoModerno", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 900;
+        font-style: normal;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              obsidian: '#000000',
+              studio: '#f8f9fa',
+            },
+            fontFamily: {
+              museo: ['MuseoModerno', 'sans-serif'],
+              syne: ['Syne', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand-hit: #f59e0b;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+      .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+      /* Maxi Style Connection Effect with MuseoModerno */
+      .maxi-layout {
+        transform: scaleX(1.1);
+        display: flex;
+        justify-content: center;
+        letter-spacing: -0.06em; /* Creates the physically connected stem look */
+        line-height: 0.8;
+      }
+
+      /* Architectural Lines */
+      .arch-line {
+        position: absolute;
+        transition: background-color 0.5s ease;
+      }
+      .line-v { width: 1px; height: 100%; }
+      .line-h { height: 1px; width: 100%; }
+
+      /* Component Blade Effect */
+      .blade-hover {
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+      }
+      .blade-hover:hover {
+        transform: translateY(-4px);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      .dark ::-webkit-scrollbar-thumb { background: #333; }
+      ::-webkit-scrollbar-thumb { background: #ccc; }
+      ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.475.0",
+        "framer-motion": "https://esm.sh/framer-motion@^12.4.7"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
