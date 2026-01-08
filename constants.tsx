@@ -8,8 +8,8 @@ export const COMPONENTS_DATA: UIComponent[] = [
     installs: '0.5k',
     isPaid: false,
     category: 'Visuals',
-    previewUrl: '/src/assets/component_01.jpg',
-    videoUrl: '/src/assets/videos/component_01.mov',
+    previewUrl: '/assets/img/component_01.jpg',
+    videoUrl: '/assets/videos/component_01.mov',
     fullDescription: 'A high-performance dual-state reveal component using synchronized CSS masking and motion-tracked scanning lines. Perfect for showcasing wireframes, blueprints, or "under-the-hood" logic.',
     codeSnippet: `import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
