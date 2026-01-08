@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
             {/* Watch Template Button */}
             <button 
               onClick={() => scrollTo('templates')}
-              className="w-full sm:w-auto group relative px-10 lg:px-12 py-5 lg:py-6 bg-black dark:bg-white text-white dark:text-black rounded-xl lg:rounded-2xl overflow-hidden transition-all hover:scale-[1.05] active:scale-95 shadow-xl border border-transparent"
+              className="w-full sm:w-auto group relative px-10 lg:px-12 py-3 lg:py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl lg:rounded-2xl overflow-hidden transition-all hover:scale-[1.05] active:scale-95 shadow-xl border border-transparent"
             >
               <div className="absolute inset-0 bg-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <span className="relative z-10 font-black uppercase text-[10px] lg:text-[11px] tracking-[0.4em] group-hover:text-black transition-colors">Watch Template</span>
@@ -134,7 +134,7 @@ const Hero: React.FC = () => {
             {/* Explore Component Button */}
             <button 
               onClick={() => scrollTo('components')}
-              className="w-full sm:w-auto group relative px-10 lg:px-12 py-5 lg:py-6 bg-transparent border border-black/10 dark:border-white/20 text-black dark:text-white rounded-xl lg:rounded-2xl overflow-hidden transition-all hover:scale-[1.05] active:scale-95 hover:border-black dark:hover:border-white"
+              className="w-full sm:w-auto group relative px-10 lg:px-12 py-3 lg:py-4 bg-transparent border border-black/10 dark:border-white/20 text-black dark:text-white rounded-xl lg:rounded-2xl overflow-hidden transition-all hover:scale-[1.05] active:scale-95 hover:border-black dark:hover:border-white"
             >
               <div className="absolute inset-0 bg-black/5 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <span className="relative z-10 font-black uppercase text-[10px] lg:text-[11px] tracking-[0.4em]">Explore Component</span>

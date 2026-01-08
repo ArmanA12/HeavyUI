@@ -31,8 +31,8 @@ const Navbar: React.FC<NavbarProps> = ({ isDark, setIsDark, onSearchOpen }) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`mx-auto pointer-events-auto transition-all duration-500 flex items-center justify-between px-4 lg:px-8 ${isScrolled
-            ? 'max-w-[500px] lg:max-w-[700px] py-3 lg:py-5 bg-white/70 dark:bg-[#1a1a1a] backdrop-blur-2xl border border-black/10 dark:border-white/5 rounded-full shadow-md'
-            : 'max-w-[1200px] py-4 lg:py-5 bg-white/70 dark:bg-[#1a1a1a] backdrop-blur-md border border-black/10 dark:border-white/5 rounded-2xl lg:rounded-[2rem] shadow-sm'
+            ? 'max-w-[500px] lg:max-w-[700px] py-1 lg:py-3 bg-white/70 dark:bg-[#1a1a1a] backdrop-blur-2xl border border-black/10 dark:border-white/5 rounded-full shadow-md'
+            : 'max-w-[1200px] py-1 lg:py-3 bg-white/70 dark:bg-[#1a1a1a] backdrop-blur-md border border-black/10 dark:border-white/5 rounded-2xl lg:rounded-[2rem] shadow-sm'
           }`}
       >
         <div className="flex items-center gap-2 lg:gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>

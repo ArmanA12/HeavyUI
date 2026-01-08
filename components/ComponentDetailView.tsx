@@ -73,12 +73,12 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[150] bg-white dark:bg-black overflow-hidden flex font-sans"
     >
-      {/* PANEL 1: SPECIFICATIONS (30% WIDTH) */}
+      {/* PANEL 1: SPECIFICATIONS (25% WIDTH) */}
       <AnimatePresence>
         {!isAnyFullScreen && (
           <motion.div 
             initial={{ width: 0, opacity: 0, x: -50 }}
-            animate={{ width: '30%', opacity: 1, x: 0 }}
+            animate={{ width: '25%', opacity: 1, x: 0 }}
             exit={{ width: 0, opacity: 0, x: -50 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="h-full border-r border-black/5 dark:border-white/5 flex flex-col bg-white dark:bg-black overflow-y-auto custom-scrollbar z-20"
@@ -170,8 +170,8 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
         )}
       </AnimatePresence>
 
-      {/* PANEL 2: MAIN VIEWPORT (55% WIDTH OR 100% IN FULLSCREEN) */}
-      <div className={`h-full relative flex flex-col transition-all duration-700 ease-in-out ${isAnyFullScreen ? 'w-full bg-white dark:bg-[#050505]' : 'w-[55%] bg-zinc-50 dark:bg-[#080808]'}`}>
+      {/* PANEL 2: MAIN VIEWPORT (60% WIDTH OR 100% IN FULLSCREEN) */}
+      <div className={`h-full relative flex flex-col transition-all duration-700 ease-in-out ${isAnyFullScreen ? 'w-full bg-white dark:bg-[#050505]' : 'w-[60%] bg-zinc-50 dark:bg-[#080808]'}`}>
         
         {/* Full Screen Header */}
         <AnimatePresence>

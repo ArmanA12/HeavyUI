@@ -1,13 +1,14 @@
 
 import React from 'react';
 import ScannerShowcase from './ScannerShowcase';
+import LuxeLogin from '@/src/components/component_01';
 
 /**
  * Registry of custom live previews.
  * To add a new component preview, simply add its ID and the React component here.
  */
 export const PREVIEW_REGISTRY: Record<string, React.FC<{ key?: any }>> = {
-  'scanner-x': (props) => <ScannerShowcase {...props} />,
+  'E-commerce': (props) => <LuxeLogin {...props} />,
 };
 
 interface DynamicPreviewProps {

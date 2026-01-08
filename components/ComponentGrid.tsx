@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { COMPONENTS_DATA } from '../constants';
 import { UIComponent } from '../types';
-import { Play, PlayCircle, Video } from 'lucide-react';
+
 
 const ComponentCard: React.FC<{ 
   component: UIComponent; 
@@ -31,21 +31,21 @@ const ComponentCard: React.FC<{
     >
       <div className="relative flex-1 bg-zinc-50/50 dark:bg-[#1a1a1a] border border-black/5 dark:border-white/5 overflow-hidden rounded-[1rem] lg:rounded-[1rem] blade-hover p-3 lg:p-[12px] shadow-sm transition-all hover:border-amber-500/20 h-full">
         <div className="relative h-full w-full overflow-hidden rounded-[1.5rem] lg:rounded-[1rem] bg-zinc-200 dark:bg-black">
-          <motion.img 
+          {/* <motion.img 
             animate={{ opacity: isHovered ? 0 : 1 }}
             src={component.previewUrl} 
             alt={component.name}
-            className="absolute inset-0 w-full h-full object-cover grayscale-[0.5]"
-          />
+            className="absolute inset-0 w-full h-full object-cover "
+          /> */}
 
           <AnimatePresence>
             {shouldRenderVideo && component.videoUrl && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0.4 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0.2 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10">
                 <video src={component.videoUrl} muted playsInline loop autoPlay className="w-full h-full object-cover" />
               </motion.div>
             )}
             {shouldRenderVideo && component.id === 'scanner-x' && isHovered && (
-               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10 flex items-center justify-center bg-amber-500/10">
+               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10 flex items-center justify-center bg-amber-500/10">
                  <div className="h-full w-[2px] bg-amber-500 animate-[scan_2s_linear_infinite] shadow-[0_0_15px_#f59e0b]"></div>
                </motion.div>
             )}
