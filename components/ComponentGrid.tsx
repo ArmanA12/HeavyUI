@@ -40,7 +40,7 @@ const ComponentCard: React.FC<{
 
           <AnimatePresence>
             {shouldRenderVideo && component.videoUrl && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 0.2 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: isHovered ? 1 : 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-10">
                 <video src={component.videoUrl} muted playsInline loop autoPlay className="w-full h-full object-cover" />
               </motion.div>
             )}

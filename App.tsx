@@ -12,7 +12,7 @@ import { ArrowRight, LayoutGrid, List } from 'lucide-react';
 import { UIComponent } from './types';
 import { COMPONENTS_DATA } from './constants';
 import { AnimatePresence, motion } from 'framer-motion';
-import LuxeLogin from './src/components/component_01';
+
 
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -139,7 +139,7 @@ const App: React.FC = () => {
         isOpen={isSearchOpen} 
         onClose={() => setIsSearchOpen(false)} 
       />
-      <LuxeLogin />
+
 
       <AnimatePresence>
         {selectedComponent && (
