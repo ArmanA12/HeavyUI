@@ -12,7 +12,7 @@ import { ArrowRight, LayoutGrid, List } from 'lucide-react';
 import { UIComponent } from './types';
 import { COMPONENTS_DATA } from './constants';
 import { AnimatePresence, motion } from 'framer-motion';
-
+import './global.css'
 
 const App: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(() => {

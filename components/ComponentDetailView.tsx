@@ -71,7 +71,7 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[150] bg-white dark:bg-black overflow-hidden flex font-sans"
+      className="fixed inset-0 z-[150] bg-white dark:bg-black overflow-hidden flex font-sans "
     >
       {/* PANEL 1: SPECIFICATIONS (25% WIDTH) */}
       <AnimatePresence>
@@ -81,7 +81,7 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
             animate={{ width: '25%', opacity: 1, x: 0 }}
             exit={{ width: 0, opacity: 0, x: -50 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="h-full border-r border-black/5 dark:border-white/5 flex flex-col bg-white dark:bg-black overflow-y-auto custom-scrollbar z-20"
+            className="h-full border-r no-scrollbar border-black/5 dark:border-white/5 flex flex-col bg-white dark:bg-black overflow-y-auto custom-scrollbar z-20"
           >
             <div className="p-10 space-y-10">
               <section className="space-y-4">
@@ -132,8 +132,8 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
                   </div>
                 </div>
                 
-                <div className="relative group bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-black/5 dark:border-white/5 overflow-hidden">
-                  <div className="p-6 font-mono text-[10px] leading-relaxed max-h-80 overflow-y-auto custom-scrollbar">
+                <div className="relative  group bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-black/5 dark:border-white/5 overflow-hidden">
+                  <div className="p-6 no-scrollbar font-mono text-[10px] leading-relaxed max-h-80 overflow-y-auto">
                     <pre className="text-zinc-500 whitespace-pre-wrap">
                       {component.codeSnippet || "// Initializing Source Code Archive..."}
                     </pre>
@@ -220,7 +220,7 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
           )}
         </AnimatePresence>
 
-        <div className="flex-1 flex items-center justify-center p-8 lg:p-24 overflow-auto scrollbar-hide">
+        <div className="flex-1 flex items-center justify-center p-1 lg:p-1 overflow-auto no-scrollbar scrollbar-hide">
           {fullScreenMode === 'code' ? (
              <motion.div 
               initial={{ opacity: 0, scale: 0.98 }}
@@ -240,7 +240,7 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
             <motion.div 
               key={`preview-${key}`}
               layout
-              className={`w-full flex items-center justify-center transition-all duration-700 ${isAnyFullScreen ? 'max-w-none h-full' : 'max-w-4xl'}`}
+              className={`w-full flex items-center justify-center transition-all duration-700 ${isAnyFullScreen ? 'max-w-none h-full' : 'w-full'}`}
             >
               <DynamicPreview 
                 componentId={component.id} 
@@ -288,13 +288,13 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
             <section className="space-y-4 mt-auto">
                <h4 className="font-mono text-[8px] uppercase tracking-[0.3em] text-zinc-400 font-bold">License & Usage</h4>
                <div className="p-4 bg-zinc-50 dark:bg-white/5 rounded-xl border border-black/5 dark:border-white/5">
-                  <p className="text-[9px] text-zinc-400 uppercase tracking-widest font-bold">MIT LICENSE</p>
+                  <p className="text-[9px] text-zinc-400 uppercase tracking-widest font-bold">Free </p>
                </div>
                <button 
                  onClick={onBack}
                  className="w-full py-4 font-mono text-[9px] uppercase tracking-[0.4em] border border-black dark:border-white rounded-xl hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-all"
                >
-                 Exit_Arch
+                 Back to Home
                </button>
             </section>
           </motion.div>

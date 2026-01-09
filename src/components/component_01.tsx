@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { 
   Mail, Lock, Github, Facebook, ArrowRight, Eye, 
-  EyeOff, Loader2, Spade 
+  EyeOff, Loader2, Spade, Check 
 } from 'lucide-react';
 
 // --- Types & Constants ---
@@ -14,9 +14,15 @@ interface Product {
   portSide: 'top' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 }
 
-const BRAND_GRADIENT = "linear-gradient(to right bottom, #f59e09, #ed8d02, #e57d00, #dc6c00, #d35b00)";
+// Themes definition
+const THEMES = [
+  { id: 'amber', name: 'Amber', primary: '#d35b00', gradient: "linear-gradient(to right bottom, #f59e09, #ed8d02, #e57d00, #dc6c00, #d35b00)", ring: 'focus:ring-amber-500/20', border: 'focus:border-amber-500', text: 'text-amber-600' },
+  { id: 'emerald', name: 'Emerald', primary: '#065f46', gradient: "linear-gradient(to right bottom, #10b981, #059669, #047857, #065f46, #064e3b)", ring: 'focus:ring-emerald-500/20', border: 'focus:border-emerald-500', text: 'text-emerald-600' },
+  { id: 'indigo', name: 'Indigo', primary: '#3730a3', gradient: "linear-gradient(to right bottom, #6366f1, #4f46e5, #4338ca, #3730a3, #312e81)", ring: 'focus:ring-indigo-500/20', border: 'focus:border-indigo-500', text: 'text-indigo-600' },
+  { id: 'rose', name: 'Rose', primary: '#9f1239', gradient: "linear-gradient(to right bottom, #f43f5e, #e11d48, #be123c, #9f1239, #881337)", ring: 'focus:ring-rose-500/20', border: 'focus:border-rose-500', text: 'text-rose-600' },
+  { id: 'black', name: 'Black', primary: '#000000', gradient: "linear-gradient(to right bottom, #161616ff, #0a0a0aff, #222121ff, #222222ff, #000000ff)", ring: 'focus:ring-black-500/90', border: 'focus:border-black-500', text: 'text-black-600' },
+];
 
-// --- Sub-components ---
 const GoogleIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -27,10 +33,10 @@ const GoogleIcon = () => (
 );
 
 const LuxeLogin: React.FC = () => {
-  // State for Branding Side
   const [isVisible, setIsVisible] = useState(false);
-
-  // State for Login Form
+  const [currentTheme, setCurrentTheme] = useState(THEMES[0]);
+  
+  // Form States
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -51,7 +57,6 @@ const LuxeLogin: React.FC = () => {
     { id: 6, img: "https://picsum.photos/seed/lux6/400/400", label: "Estate Decor", x: 78, y: 76, portSide: 'top-left' },
   ];
 
-  // Helper functions for SVG paths
   const getPortCoord = (p: Product) => {
     const offset = 6; 
     let px = p.x;
@@ -80,63 +85,54 @@ const LuxeLogin: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row bg-white selection:bg-amber-600 selection:text-white">
-      {/* Required CSS Animations */}
+    <div className={`min-h-screen w-full flex flex-col md:flex-row bg-white selection:bg-black selection:text-white transition-colors duration-700`}>
       <style>{`
-        @keyframes draw {
-          from { stroke-dasharray: 0 100; }
-          to { stroke-dasharray: 100 0; }
-        }
-        .animate-draw-slow {
-          stroke-dasharray: 100;
-          stroke-dashoffset: 100;
-          animation: draw-fill 3s ease-out forwards;
-        }
-        @keyframes draw-fill {
-          to { stroke-dashoffset: 0; }
-        }
-        .animate-drift-premium {
-          animation: drift 8s ease-in-out infinite;
-        }
-        @keyframes drift {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          50% { transform: translateY(-10px) translateX(5px); }
-        }
-        .animate-breathe {
-          animation: breathe 4s ease-in-out infinite;
-        }
-        @keyframes breathe {
-          0%, 100% { transform: scale(1); filter: brightness(1); }
-          50% { transform: scale(1.05); filter: brightness(1.1); }
-        }
-        .ease-premium {
-          transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-        }
+        @keyframes draw { from { stroke-dasharray: 0 100; } to { stroke-dasharray: 100 0; } }
+        .animate-draw-slow { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw-fill 3s ease-out forwards; }
+        @keyframes draw-fill { to { stroke-dashoffset: 0; } }
+        .animate-drift-premium { animation: drift 8s ease-in-out infinite; }
+        @keyframes drift { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10px) translateX(5px); } }
+        .animate-breathe { animation: breathe 4s ease-in-out infinite; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.05); filter: brightness(1.1); } }
+        .ease-premium { transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1); }
       `}</style>
 
+      {/* --- THEME PICKER (TOP CENTER) --- */}
+      <div className="fixed top-6 left-1/2 z-[99999] -translate-x-1/2 z-[100] bg-white/80 backdrop-blur-md border border-gray-100 p-2 rounded-2xl shadow-2xl flex gap-3 items-center">
+  
+        <div className="flex gap-2">
+          {THEMES.map((theme) => (
+            <button
+              key={theme.id}
+              onClick={() => setCurrentTheme(theme)}
+              className={`w-8 h-8 rounded-full transition-all duration-300 flex items-center justify-center relative ${currentTheme.id === theme.id ? 'scale-110' : 'hover:scale-105'}`}
+              style={{ background: theme.gradient }}
+            >
+              {currentTheme.id === theme.id && <Check size={14} className="text-white" />}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* LEFT SIDE: BRANDING ANIMATION */}
-      <div className="w-full md:w-1/2 min-h-[500px] md:min-h-screen relative overflow-hidden flex items-center justify-center bg-[#d35b00]">
-        
-        {/* Grid Background */}
+      <div 
+        className="w-full md:w-1/2 min-h-[500px] md:min-h-screen relative overflow-hidden flex items-center justify-center transition-colors duration-1000"
+        style={{ backgroundColor: currentTheme.primary }}
+      >
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
             className={`w-full h-full transition-opacity duration-[3000ms] ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{
-              backgroundImage: `
-                linear-gradient(to right, rgba(217, 119, 6, 0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(217, 119, 6, 0.1) 1px, transparent 1px)
-              `,
-              backgroundSize: "60px 60px",
+              backgroundImage: `linear-gradient(to right, rgba(255,255,255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255, 0.05) 1px, transparent 1px)`,
+              backgroundSize: "6px 6px",
               maskImage: "radial-gradient(circle, black, transparent 90%)",
-              WebkitMaskImage: "radial-gradient(circle, black, transparent 90%)",
             }}
           />
         </div>
 
-        {/* Connection Lines (SVG) */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
           {isVisible && (
-            <g opacity="0.2">
+            <g opacity="0.3">
               {products.map((p, idx) => (
                 <path 
                   key={p.id}
@@ -153,7 +149,6 @@ const LuxeLogin: React.FC = () => {
           )}
         </svg>
 
-        {/* Floating Product Cards */}
         <div className="absolute inset-0 w-full h-full z-20">
           {products.map((p, idx) => {
             const currentStyle = isVisible 
@@ -164,16 +159,10 @@ const LuxeLogin: React.FC = () => {
               <div 
                 key={p.id}
                 className="absolute ease-premium duration-[3500ms]"
-                style={{ 
-                  ...currentStyle,
-                  width: '120px',
-                  height: '120px',
-                  transitionDelay: `${800 + idx * 180}ms`,
-                  pointerEvents: isVisible ? 'auto' : 'none'
-                }}
+                style={{ ...currentStyle, width: '120px', height: '120px', transitionDelay: `${800 + idx * 180}ms` }}
               >
                 <div 
-                  className="relative w-full h-full p-2 rounded-2xl shadow-2xl bg-white border border-black/[0.04] animate-drift-premium group hover:shadow-amber-500/40 hover:-translate-y-4 transition-all duration-1000 cursor-pointer" 
+                  className={`relative w-full h-full p-2 rounded-2xl shadow-2xl bg-white border border-black/[0.04] animate-drift-premium group hover:-translate-y-4 transition-all duration-1000 cursor-pointer`} 
                   style={{ animationDelay: `${idx * 1.5}s` }}
                 >
                   <div className="w-full h-full overflow-hidden rounded-xl bg-gray-50/50">
@@ -188,30 +177,23 @@ const LuxeLogin: React.FC = () => {
           })}
         </div>
 
-        {/* Central Logo */}
         <div className={`z-40 p-2 rounded-3xl bg-white/90 backdrop-blur-xl border border-white/80 shadow-2xl transition-all duration-[2500ms] ease-premium transform flex flex-col items-center ${isVisible ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}>
           <div 
-            style={{ backgroundImage: BRAND_GRADIENT }}
-            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl animate-breathe"
+            style={{ backgroundImage: currentTheme.gradient }}
+            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl animate-breathe transition-all duration-1000"
           >
             <Spade size={32} className="text-white" />
           </div>
-        </div>
-
-        {/* Ambient Glow */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <div className="w-[70%] aspect-square bg-gradient-to-br from-amber-400/20 via-transparent to-transparent rounded-full blur-[120px] opacity-60" />
         </div>
       </div>
 
       {/* RIGHT SIDE: LOGIN FORM */}
       <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-6 md:p-12 lg:p-24 bg-white">
         <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          
           <div className="text-center md:text-left">
             <div className="flex justify-center mb-6 group items-center gap-2">
                <div 
-                 style={{ backgroundImage: BRAND_GRADIENT }}
+                 style={{ backgroundImage: currentTheme.gradient }}
                  className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all group-hover:rotate-[15deg] group-hover:scale-110 duration-500 shadow-lg shrink-0"
                >
                  <Spade size={32} className="text-white" />
@@ -223,17 +205,16 @@ const LuxeLogin: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div className="space-y-4">
-              {/* Email */}
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-gray-700 uppercase tracking-wider ml-1">Email Address</label>
+                <label className="text-xs font-semibold text-gray-700 uppercase tracking-wider ml-1">Email </label>
                 <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-amber-600 transition-colors">
+                  <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:${currentTheme.text} transition-colors`}>
                     <Mail size={18} />
                   </div>
                   <input
                     type="email"
                     required
-                    className="block w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all text-sm"
+                    className={`block w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50/50 focus:bg-white focus:ring-2 ${currentTheme.ring} ${currentTheme.border} outline-none transition-all text-sm`}
                     placeholder="name@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -241,24 +222,23 @@ const LuxeLogin: React.FC = () => {
                 </div>
               </div>
 
-              {/* Password */}
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-gray-700 uppercase tracking-wider ml-1">Password</label>
                 <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-amber-600 transition-colors">
+                  <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:${currentTheme.text} transition-colors`}>
                     <Lock size={18} />
                   </div>
                   <input
                     type={showPassword ? "text" : "password"}
                     required
-                    className="block w-full pl-11 pr-12 py-3 border border-gray-200 rounded-xl bg-gray-50/50 focus:bg-white focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all text-sm"
+                    className={`block w-full pl-11 pr-12 py-3 border border-gray-200 rounded-xl bg-gray-50/50 focus:bg-white focus:ring-2 ${currentTheme.ring} ${currentTheme.border} outline-none transition-all text-sm`}
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <button
                     type="button"
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-amber-600 transition-colors"
+                    className={`absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:${currentTheme.text} transition-colors`}
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -272,20 +252,21 @@ const LuxeLogin: React.FC = () => {
                 <input
                   id="rem-me"
                   type="checkbox"
-                  className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded cursor-pointer"
+                  style={{ accentColor: currentTheme.primary }}
+                  className="h-4 w-4 border-gray-300 rounded cursor-pointer"
                   checked={rememberMe}
                   onChange={() => setRememberMe(!rememberMe)}
                 />
                 <label htmlFor="rem-me" className="ml-2 block text-sm text-gray-600 cursor-pointer">Remember me</label>
               </div>
-              <a href="#" className="text-sm font-medium text-gray-500 hover:text-amber-600 underline-offset-4 hover:underline transition-all">Forgot password?</a>
+              <a href="#" className={`text-sm font-medium text-gray-500 hover:${currentTheme.text} underline-offset-4 hover:underline transition-all`}>Forgot password?</a>
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              style={{ backgroundImage: BRAND_GRADIENT }}
-              className="group relative w-full flex justify-center py-4 text-sm font-bold rounded-xl text-white shadow-lg shadow-amber-500/25 hover:brightness-110 transition-all active:scale-[0.98] disabled:opacity-70"
+              style={{ backgroundImage: currentTheme.gradient }}
+              className="group relative w-full flex justify-center py-4 text-sm font-bold rounded-xl text-white shadow-lg transition-all active:scale-[0.98] disabled:opacity-70 hover:brightness-110"
             >
               {isLoading ? <Loader2 className="animate-spin" size={20} /> : (
                 <span className="flex items-center">
@@ -296,9 +277,10 @@ const LuxeLogin: React.FC = () => {
           </form>
 
           <div className="text-center">
-            <p className="text-sm text-gray-500">New to the club? <a href="#" className="font-semibold text-amber-600 hover:underline">Create an account</a></p>
+            <p className="text-sm text-gray-500">New to the club? <a href="#" className={`font-semibold ${currentTheme.text} hover:underline`}>Create an account</a></p>
           </div>
 
+          {/* Social Icons Section (Remains same but can be themed if needed) */}
           <div className="relative mt-8">
             <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-100"></div></div>
             <div className="relative flex justify-center text-xs uppercase tracking-widest font-semibold">
@@ -318,10 +300,6 @@ const LuxeLogin: React.FC = () => {
                 </div>
               </button>
             ))}
-          </div>
-
-          <div className="mt-8 pt-8 text-center text-[10px] text-gray-400 uppercase tracking-widest">
-            &copy; {new Date().getFullYear()} LuxeCommerce Global Inc. &bull; <a href="#" className="hover:text-amber-600">Privacy</a> &bull; <a href="#" className="hover:text-amber-600">Terms</a>
           </div>
         </div>
       </div>
