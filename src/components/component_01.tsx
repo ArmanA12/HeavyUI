@@ -4,7 +4,6 @@ import {
   EyeOff, Loader2, Spade, Check 
 } from 'lucide-react';
 
-// --- Types & Constants ---
 interface Product {
   id: number;
   img: string;
@@ -14,7 +13,6 @@ interface Product {
   portSide: 'top' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 }
 
-// Themes definition
 const THEMES = [
   { id: 'amber', name: 'Amber', primary: '#d35b00', gradient: "linear-gradient(to right bottom, #f59e09, #ed8d02, #e57d00, #dc6c00, #d35b00)", ring: 'focus:ring-amber-500/20', border: 'focus:border-amber-500', text: 'text-amber-600' },
   { id: 'emerald', name: 'Emerald', primary: '#065f46', gradient: "linear-gradient(to right bottom, #10b981, #059669, #047857, #065f46, #064e3b)", ring: 'focus:ring-emerald-500/20', border: 'focus:border-emerald-500', text: 'text-emerald-600' },
@@ -36,7 +34,6 @@ const LuxeLogin: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(THEMES[0]);
   
-  // Form States
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -97,7 +94,6 @@ const LuxeLogin: React.FC = () => {
         .ease-premium { transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1); }
       `}</style>
 
-      {/* --- THEME PICKER (TOP CENTER) --- */}
       <div className="fixed top-6 left-1/2 z-[99999] -translate-x-1/2 z-[100] bg-white/80 backdrop-blur-md border border-gray-100 p-2 rounded-2xl shadow-2xl flex gap-3 items-center">
   
         <div className="flex gap-2">
@@ -114,7 +110,6 @@ const LuxeLogin: React.FC = () => {
         </div>
       </div>
 
-      {/* LEFT SIDE: BRANDING ANIMATION */}
       <div 
         className="w-full md:w-1/2 min-h-[500px] md:min-h-screen relative overflow-hidden flex items-center justify-center transition-colors duration-1000"
         style={{ backgroundColor: currentTheme.primary }}
@@ -187,7 +182,6 @@ const LuxeLogin: React.FC = () => {
         </div>
       </div>
 
-      {/* RIGHT SIDE: LOGIN FORM */}
       <div className="w-full md:w-1/2 min-h-screen flex items-center justify-center p-6 md:p-12 lg:p-24 bg-white">
         <div className="w-full max-w-md space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <div className="text-center md:text-left">
@@ -280,7 +274,7 @@ const LuxeLogin: React.FC = () => {
             <p className="text-sm text-gray-500">New to the club? <a href="#" className={`font-semibold ${currentTheme.text} hover:underline`}>Create an account</a></p>
           </div>
 
-          {/* Social Icons Section (Remains same but can be themed if needed) */}
+
           <div className="relative mt-8">
             <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-100"></div></div>
             <div className="relative flex justify-center text-xs uppercase tracking-widest font-semibold">
