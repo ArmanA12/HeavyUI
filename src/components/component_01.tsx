@@ -20,7 +20,7 @@ const THEMES = [
   { id: 'emerald', name: 'Emerald', primary: '#065f46', gradient: "linear-gradient(to right bottom, #10b981, #059669, #047857, #065f46, #064e3b)", ring: 'focus:ring-emerald-500/20', border: 'focus:border-emerald-500', text: 'text-emerald-600' },
   { id: 'indigo', name: 'Indigo', primary: '#3730a3', gradient: "linear-gradient(to right bottom, #6366f1, #4f46e5, #4338ca, #3730a3, #312e81)", ring: 'focus:ring-indigo-500/20', border: 'focus:border-indigo-500', text: 'text-indigo-600' },
   { id: 'rose', name: 'Rose', primary: '#9f1239', gradient: "linear-gradient(to right bottom, #f43f5e, #e11d48, #be123c, #9f1239, #881337)", ring: 'focus:ring-rose-500/20', border: 'focus:border-rose-500', text: 'text-rose-600' },
-  { id: 'black', name: 'Black', primary: '#000000', gradient: "linear-gradient(to right bottom, #161616ff, #0a0a0aff, #222121ff, #222222ff, #000000ff)", ring: 'focus:ring-black-500/90', border: 'focus:border-black-500', text: 'text-black-600' },
+  { id: 'black', name: 'Black', primary: '#000000', gradient: "linear-gradient(to right bottom, #1f1f1fff, #111111, #111111ff, #000000, #000000)", ring: 'focus:ring-black-500/90', border: 'focus:border-black-500', text: 'text-black-600' },
 ];
 
 const GoogleIcon = () => (
@@ -124,7 +124,7 @@ const LuxeLogin: React.FC = () => {
             className={`w-full h-full transition-opacity duration-[3000ms] ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{
               backgroundImage: `linear-gradient(to right, rgba(255,255,255, 0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255, 0.05) 1px, transparent 1px)`,
-              backgroundSize: "6px 6px",
+              backgroundSize: "3px 3px",
               maskImage: "radial-gradient(circle, black, transparent 90%)",
             }}
           />
