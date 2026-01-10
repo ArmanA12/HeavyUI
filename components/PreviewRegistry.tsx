@@ -2,6 +2,7 @@
 import React from 'react';
 import { TextReveal } from '@/src/components/Component_02';
 import LuxeLogin from '@/src/components/component_01';
+import CardReveal from '@/src/components/Component_03';
 
 /**
  * Registry of custom live previews.
@@ -10,6 +11,7 @@ import LuxeLogin from '@/src/components/component_01';
 export const PREVIEW_REGISTRY: Record<string, React.FC<{ key?: any }>> = {
   'E-commerce': (props) => <LuxeLogin {...props} />,
   'Text-Reveal-1': (props) => <TextReveal {...props} />,
+  'Product-Card-Reveal': (props) => <CardReveal {...props} />,
 };
 
 interface DynamicPreviewProps {

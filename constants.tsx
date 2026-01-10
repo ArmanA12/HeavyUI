@@ -68,30 +68,32 @@ export default XRayScanner;`,
     techStack: ['Tailwind', 'GSAP'],
      Dependencies:['GSAP','@gsap/react']
   },
-  {
-    id: '2',
-    name: 'Floating 3D Hero',
-    installs: '8.9k',
-    isPaid: true,
-    category: 'Sections',
-    previewUrl: 'https://picsum.photos/seed/comp2/600/400',
-    videoUrl: 'https://www.pexels.com/download/video/34693606/',
-    fullDescription: 'A WebGL-powered hero section that responds to device orientation and mouse proximity.',
-    techStack: ['Three.js', 'React Three Fiber'],
-     Dependencies:['GSAP','@gsap/react']
-  },
-  {
+   {
     id: '3',
     name: 'Liquid Button Set',
     installs: '24.1k',
     isPaid: false,
     category: 'Buttons',
     previewUrl: 'https://picsum.photos/seed/comp3/600/400',
-    videoUrl: 'https://www.pexels.com/download/video/30809325/',
+    videoUrl: 'https://www.pexels.com/download/video/5828438/',
     fullDescription: 'SVG filter-based gooey buttons that merge and split with physics-based animations.',
     techStack: ['SVG Filters', 'GSAP'],
      Dependencies:['GSAP','@gsap/react']
   },
+    {
+    id: 'Product-Card-Reveal',
+    name: 'Product Card Reveal',
+    installs: '8.9k',
+    isPaid: true,
+    category: 'Card',
+    previewUrl: 'https://picsum.photos/seed/comp2/600/400',
+    videoUrl: '/assets/videos/component_03.mov',
+    fullDescription: 'A WebGL-powered hero section that responds to device orientation and mouse proximity.',
+    techStack: ['Three.js', 'React Three Fiber'],
+     Dependencies:['GSAP','Tailwind']
+  },
+  
+
   {
     id: '4',
     name: 'Glassmorphic Sidebar',
