@@ -10,6 +10,7 @@ export interface UIComponent {
   fullDescription?: string;
   codeSnippet?: string;
   techStack?: string[];
+  Dependencies?:string[];
 }
 
 export interface Template {

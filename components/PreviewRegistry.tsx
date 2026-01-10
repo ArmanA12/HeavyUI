@@ -1,6 +1,6 @@
 
 import React from 'react';
-import ScannerShowcase from './ScannerShowcase';
+import { TextReveal } from '@/src/components/Component_02';
 import LuxeLogin from '@/src/components/component_01';
 
 /**
@@ -9,6 +9,7 @@ import LuxeLogin from '@/src/components/component_01';
  */
 export const PREVIEW_REGISTRY: Record<string, React.FC<{ key?: any }>> = {
   'E-commerce': (props) => <LuxeLogin {...props} />,
+  'Text-Reveal-1': (props) => <TextReveal {...props} />,
 };
 
 interface DynamicPreviewProps {

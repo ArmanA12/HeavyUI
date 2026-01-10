@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
+import AsteroidShower from './AstroShower';
 
 const Hero: React.FC = () => {
   // Exact word order as requested
@@ -142,6 +143,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
+      <AsteroidShower />
     </section>
   );
 };

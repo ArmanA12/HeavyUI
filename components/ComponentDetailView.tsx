@@ -106,7 +106,7 @@ const ComponentDetailView: React.FC<DetailViewProps> = ({
               <section className="space-y-4">
                 <h4 className="font-mono text-[12px] uppercase tracking-[0.2em]  font-bold">Dependencies</h4>
                 <div className="space-y-2">
-                  {['framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'].map(dep => (
+                  {component.Dependencies?.map(dep => (
                     <div key={dep} className="flex items-center justify-between py-2 border-b border-black/5 dark:border-white/5">
                       <span className="font-mono text-[10px] text-zinc-500">{dep}</span>
                       <span className="text-[9px] text-zinc-400">^latest</span>

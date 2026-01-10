@@ -43,16 +43,18 @@ const XRayScanner = ({ surface, core }) => {
 
 export default XRayScanner;`,
     techStack: ['React', 'Framer Motion', 'Clip-Path'],
+    Dependencies:['GSAP','@gsap/react']
+    
   },
   {
-    id: '1',
-    name: 'Neo-Glow Navigation',
+    id: 'Text-Reveal-1',
+    name: 'Text-Reveal-1',
     installs: '12.4k',
     isPaid: false,
     category: 'Navigation',
     previewUrl: 'https://picsum.photos/seed/comp1/600/400',
-    videoUrl: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
-    fullDescription: 'Ultra-thin navigational primitive with adaptive glow states and collision-aware dropdowns.',
+    videoUrl: '/assets/videos/Component_02.mov',
+    fullDescription: 'A fast, lightweight text reveal built with GSAP and Tailwind, perfect for grabbing attention in hero sections or subheaders. It splits your text into individual letters for a smooth 3D flip effect, keeping word gaps perfect even at huge font sizes',
     codeSnippet: `export const NeoNav = () => (
   <nav className="fixed top-0 w-full flex justify-between p-6 backdrop-blur-xl border-b border-white/5">
     <div className="logo font-black">HEAVY</div>
@@ -63,7 +65,8 @@ export default XRayScanner;`,
     </div>
   </nav>
 );`,
-    techStack: ['Tailwind', 'Framer Motion'],
+    techStack: ['Tailwind', 'GSAP'],
+     Dependencies:['GSAP','@gsap/react']
   },
   {
     id: '2',
@@ -75,6 +78,7 @@ export default XRayScanner;`,
     videoUrl: 'https://www.pexels.com/download/video/34693606/',
     fullDescription: 'A WebGL-powered hero section that responds to device orientation and mouse proximity.',
     techStack: ['Three.js', 'React Three Fiber'],
+     Dependencies:['GSAP','@gsap/react']
   },
   {
     id: '3',
@@ -86,6 +90,7 @@ export default XRayScanner;`,
     videoUrl: 'https://www.pexels.com/download/video/30809325/',
     fullDescription: 'SVG filter-based gooey buttons that merge and split with physics-based animations.',
     techStack: ['SVG Filters', 'GSAP'],
+     Dependencies:['GSAP','@gsap/react']
   },
   {
     id: '4',
@@ -96,6 +101,7 @@ export default XRayScanner;`,
     previewUrl: 'https://picsum.photos/seed/comp4/600/400',
     videoUrl: 'https://www.pexels.com/download/video/34693673/',
     techStack: ['CSS Backdrop', 'React'],
+     Dependencies:['GSAP','@gsap/react']
   },
   {
     id: '5',
@@ -106,6 +112,7 @@ export default XRayScanner;`,
     previewUrl: 'https://picsum.photos/seed/comp5/600/400',
     videoUrl: 'https://www.pexels.com/download/video/34693636/',
     techStack: ['CSS Grid', 'Framer Motion'],
+     Dependencies:['GSAP','@gsap/react']
   }
 ];
 
